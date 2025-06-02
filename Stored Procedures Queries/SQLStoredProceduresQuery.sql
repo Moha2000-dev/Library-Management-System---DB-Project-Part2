@@ -54,23 +54,23 @@ GO
 --  Test Script for Stored Procedures
 
 -- 1. Test sp_MarkBookUnavailable
-PRINT '--- Before sp_MarkBookUnavailable ---';
+
 SELECT Book_ID, Title, Availability_Status FROM Book WHERE Book_ID = 1;
 
 EXEC sp_MarkBookUnavailable @BookID = 1;
 
-PRINT '--- After sp_MarkBookUnavailable ---';
+
 SELECT Book_ID, Title, Availability_Status FROM Book WHERE Book_ID = 1;
 
 -- 2. Test sp_UpdateLoanStatus
-PRINT '--- Before sp_UpdateLoanStatus ---';
+
 SELECT Loan_ID, Book_ID, Due_Date, Return_Date, Status FROM Loan;
 
 EXEC sp_UpdateLoanStatus;
 
-PRINT '--- After sp_UpdateLoanStatus ---';
+
 SELECT Loan_ID, Book_ID, Due_Date, Return_Date, Status FROM Loan;
 
 -- 3. Test sp_RankMembersByFines
-PRINT '--- Output of sp_RankMembersByFines ---';
+
 EXEC sp_RankMembersByFines;
